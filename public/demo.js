@@ -59,7 +59,7 @@ var Demo = React.createClass({
 
     frame.inCart = true;
     frame.bookmarked = false;
-    
+
    	this.setState({glasses: newState});
   },
 
@@ -68,19 +68,18 @@ var Demo = React.createClass({
   	var inCart = _.map(_.filter(this.state.glasses, function(g) {
   	  return g.inCart;
   	}), function(g) {
-  		console.log("inCart id "  + g.id);
   		return (
-  	<div key={g.name}>
+  	<div key={g.id}>
   	  <div className="six">
   	    <img src={g.image}/>
   	  </div>
   	  <div className="two">
-  	    <div>{g.name}</div>
+  	    <div>{g.id}</div>
   	    <div>{g.color}</div>
   	  </div>
   	  <div className="two">
-  	    <img src="images/remove.png"/>
-  	    <img src="images/bookmark.png" alt="bookmark" onClick={this.cartToBookmarks.bind(this, g.id)}/>
+  	    <div><img src="images/remove.png"/></div>
+  	    <div><img src="images/bookmark.png" alt="bookmark" onClick={this.cartToBookmarks.bind(this, g.id)}/></div>
   	  </div>
   	  <div className="two">
   	    {g.price}
