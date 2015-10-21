@@ -42,30 +42,31 @@ var Demo = React.createClass({
 
     frame.inCart = true;
     frame.bookmarked = false;
-    
+
    	this.setState({glasses: newState});
   },
 
   render: function() {
+    console.log("rendering")
 
   	var inCart = _.map(_.filter(this.state.glasses, function(g) {
   	  return g.inCart;
   	}), function(g) {
   		console.log("inCart id "  + g.id);
   		return (
-  	<div key={g.name}>
-  	  <div className="six">
+  	<div key={g.name} className="row">
+  	  <div className="four columns">
   	    <img src={g.image}/>
   	  </div>
-  	  <div className="two">
+  	  <div className="four columns">
   	    <div>{g.name}</div>
   	    <div>{g.color}</div>
   	  </div>
-  	  <div className="two">
+  	  <div className="two columns">
   	    <img src="images/remove.png"/>
   	    <img src="images/bookmark.png" alt="bookmark" onClick={this.cartToBookmarks.bind(this, g.id)}/>
   	  </div>
-  	  <div className="two">
+  	  <div className="two columns">
   	    {g.price}
   	  </div>
   	</div>)
@@ -76,33 +77,39 @@ var Demo = React.createClass({
   	}), function(g) {
   		console.log("bookmarked id "  + g.id);
   		return (
-  	<div key={g.name}>
-  	  <div className="six">
+  	<div key={g.name} className="row">
+  	  <div className="four columns">
   	    <img src={g.image}/>
   	  </div>
-  	  <div className="two">
+  	  <div className="four columns">
   	    <div>{g.name}</div>
   	    <div>{g.color}</div>
   	  </div>
-  	  <div className="two">
+  	  <div className="two columns">
   	    <img src="images/remove.png"/>
   	    <img src="images/cart.png" alt="cart" onClick={this.bookmarksToCart.bind(this, g.id)}/>
   	  </div>
-  	  <div className="two">
+  	  <div className="two columns">
   	    {g.price}
   	  </div>
   	</div>)
   	}, this);
 
+    console.log(bookmarks)
+    console.log(inCart)
     return (
-      <div>
-        <h1>Cart</h1>
+      <div className="container">
+        <div className="row">
+        <h1> In your cart </h1>
         {inCart}
-        <h1>Bookmarks</h1>
+        </div>
+        <div className="row">
+        <h1> Bookmarked </h1>
         {bookmarks}
+        </div>
       </div>
 	)
   }
 });
 
-React.render(<Demo />, document.querySelector(".container"));
+React.render(<Demo />, document.querySelector("#main"));
