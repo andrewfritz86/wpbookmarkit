@@ -1,0 +1,25 @@
+.wrapper {
+  border-bottom: 2px solid black;
+  margin-bottom: 5%;
+}
+
+.main {
+  padding-top: 20px;
+}
+
+.image {
+  width: 100%;
+}
+
+
+.large {
+ font-size: 24px;
+}
+
+.medium {
+
+}
+
+.small {
+  font-size: 16px;
+}
