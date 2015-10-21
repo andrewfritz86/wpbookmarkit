@@ -119,8 +119,8 @@ var Demo = React.createClass({
 
     return (
       <div className="container">
-        <div className="cartstatus container">
-          <div>You have {inCart.length} items in your cart: ${sum}</div>
+        <div className="cartstatus row">
+          <div className="twelve columns cart-info">You have {inCart.length} items in your cart: ${sum}</div>
           <div><img src="images/incart.png" className="twelve columns" /></div>
         </div>
         <div className="row">

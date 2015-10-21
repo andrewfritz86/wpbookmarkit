@@ -25,6 +25,11 @@
 
 }
 
+.cart-info {
+	text-align: center;
+	font-size: 20px;
+}
+
 .shmee {
   font-size: 36px;
 }
@@ -36,6 +41,11 @@
 .bookmark {
   width: 20%;
 
+}
+
+.cart {
+  width: 20%;
+  margin-top: 10%;
 }
 
 .remove {
