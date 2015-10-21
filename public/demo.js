@@ -70,17 +70,17 @@ var Demo = React.createClass({
   	  return g.inCart;
   	}), function(g) {
   		return (
-  	<div key={g.name} className="row">
+  	<div key={g.name} className="row move">
   	  <div className="four columns">
   	    <img src={g.image} className="image"/>
   	  </div>
   	  <div className="four columns">
-  	    <div>{g.name}</div>
-  	    <div>{g.color}</div>
+  	    <div className="large">{g.name}</div>
+  	    <div className="small">{g.color}</div>
   	  </div>
   	  <div className="two columns">
-  	    <img src="images/remove.png" className="image"/>Remove
-  	    <img src="images/bookmark.png" alt="bookmark" onClick={this.cartToBookmarks.bind(this, g.id)} className="image"/>
+  	    <img src="images/remove.png" className="remove"/>
+  	    <img src="images/bookmark.png" alt="bookmark" onClick={this.cartToBookmarks.bind(this, g.id)} className="bookmark"/>
   	  </div>
   	  <div className="two columns">
   	    {g.price}
@@ -92,7 +92,7 @@ var Demo = React.createClass({
   	  return g.bookmarked;
   	}), function(g) {
   		return (
-  	<div key={g.name} className="row">
+  	<div key={g.name} className="row move">
   	  <div className="four columns">
   	    <img src={g.image} className="image"/>
   	  </div>
@@ -101,8 +101,8 @@ var Demo = React.createClass({
   	    <div>{g.color}</div>
   	  </div>
   	  <div className="two columns">
-  	    <img src="images/remove.png" className="image"/>Remove
-  	    <img src="images/cart.png" alt="Cart" onClick={this.bookmarksToCart.bind(this, g.id)} className="image"/>
+  	    <img src="images/remove.png" className="remove"/>
+  	    <img src="images/cart.png" alt="Cart" onClick={this.bookmarksToCart.bind(this, g.id)} className="cart"/>
   	  </div>
   	  <div className="two columns">
   	    {g.price}
@@ -115,11 +115,11 @@ var Demo = React.createClass({
     return (
       <div className="container">
         <div className="row">
-        <h1> In your cart </h1>
+        <h1 className="shmee"> In your cart </h1>
         {inCart}
         </div>
         <div className="row">
-        <h1> Bookmarked </h1>
+        <h1 className="shmee"> Bookmarked </h1>
         {bookmarks}
         </div>
       </div>
