@@ -20,13 +20,40 @@ var Demo = React.createClass({
       }]
 	}
   },
+
+  cartToBookmarks: function(id) {
+  	var newState = this.state.glasses
+  	//manipulate old state
+    var frame = _.find(newState, function(g) {
+    	return g.id === id;
+    });
+    console.log(frame)
+    frame.inCart = false;
+    frame.bookmarked = true;
+   	this.setState({glasses: newState});
+  },
+
+  bookmarksToCart: function(id) {
+  	var newState = this.state.glasses
+  	//manipulate old state
+    var frame = _.find(newState, function(g) {
+    	return g.id === id;
+    });
+
+    frame.inCart = true;
+    frame.bookmarked = false;
+    
+   	this.setState({glasses: newState});
+  },
+
   render: function() {
 
   	var inCart = _.map(_.filter(this.state.glasses, function(g) {
   	  return g.inCart;
   	}), function(g) {
+  		console.log("inCart id "  + g.id);
   		return (
-  	<div>
+  	<div key={g.name}>
   	  <div className="six">
   	    <img src={g.image}/>
   	  </div>
@@ -36,19 +63,20 @@ var Demo = React.createClass({
   	  </div>
   	  <div className="two">
   	    <img src="images/remove.png"/>
-  	    <img src="images/bookmark.png"/>
+  	    <img src="images/bookmark.png" alt="bookmark" onClick={this.cartToBookmarks.bind(this, g.id)}/>
   	  </div>
   	  <div className="two">
   	    {g.price}
   	  </div>
   	</div>)
-  	});
+  	}, this);
 
   	var bookmarks = _.map(_.filter(this.state.glasses, function(g) {
   	  return g.bookmarked;
   	}), function(g) {
+  		console.log("bookmarked id "  + g.id);
   		return (
-  	<div>
+  	<div key={g.name}>
   	  <div className="six">
   	    <img src={g.image}/>
   	  </div>
@@ -58,14 +86,14 @@ var Demo = React.createClass({
   	  </div>
   	  <div className="two">
   	    <img src="images/remove.png"/>
-  	    <img src="images/bookmark.png"/>
+  	    <img src="images/cart.png" alt="cart" onClick={this.bookmarksToCart.bind(this, g.id)}/>
   	  </div>
   	  <div className="two">
   	    {g.price}
   	  </div>
   	</div>)
-  	});
-  	console.log(inCart);
+  	}, this);
+
     return (
       <div>
         <h1>Cart</h1>
@@ -75,6 +103,6 @@ var Demo = React.createClass({
       </div>
 	)
   }
-})
+});
 
 React.render(<Demo />, document.querySelector(".container"));
