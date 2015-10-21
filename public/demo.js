@@ -64,11 +64,12 @@ var Demo = React.createClass({
   },
 
   render: function() {
-    console.log("rendering")
 
-  	var inCart = _.map(_.filter(this.state.glasses, function(g) {
+  	var inCart = _.filter(this.state.glasses, function(g) {
   	  return g.inCart;
-  	}), function(g) {
+  	});
+
+  	var inCartDom = _.map(inCart, function(g) {
   		return (
   	<div key={g.name} className="row">
   	  <div className="four columns">
@@ -110,13 +111,21 @@ var Demo = React.createClass({
   	</div>)
   	}, this);
 
-    console.log(bookmarks)
-    console.log(inCart)
+  	var sum = _.reduce(_.map(_.pluck(inCart, 'price'), function(p) {
+  		return Number(p.substring(1));
+  	}), function(total, n) {
+  		return total + n;
+  	});
+
     return (
       <div className="container">
+        <div className="cartstatus container">
+          <div>You have {inCart.length} items in your cart: ${sum}</div>
+          <div><img src="images/incart.png" className="twelve columns" /></div>
+        </div>
         <div className="row">
         <h1> In your cart </h1>
-        {inCart}
+        {inCartDom}
         </div>
         <div className="row">
         <h1> Bookmarked </h1>
