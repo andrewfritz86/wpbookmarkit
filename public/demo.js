@@ -2,21 +2,37 @@ var Demo = React.createClass({
   getInitialState: function() {
     return {
       glasses: [{
-	    name: "Name 1",
-        image: "images/eyes1.png",
-        color: "blue",
+	    name: "Winston",
+        image: "images/frames/winston.png",
+        color: "Old Fashioned Fade",
         price: "$95.00",
         bookmarked: false,
         inCart: true,
         id: 1
       }, {
-	    name: "Name 2",
-        image: "images/eyes2.png",
-        color: "red",
+	    name: "Grace",
+        image: "images/frames/grace.png",
+        color: "Jet Black",
         price: "$95.00",
         bookmarked: true,
         inCart: false,
         id: 2
+      }, {
+	    name: "Crane",
+        image: "images/frames/crane.png",
+        color: "Whiskey Tortoise",
+        price: "$95.00",
+        bookmarked: true,
+        inCart: false,
+        id: 3
+      }, {
+	    name: "Model X1",
+        image: "images/frames/uncrate.png",
+        color: "Jet Black Matte",
+        price: "$95.00",
+        bookmarked: false,
+        inCart: true,
+        id: 4
       }]
 	}
   },
@@ -27,9 +43,10 @@ var Demo = React.createClass({
     var frame = _.find(newState, function(g) {
     	return g.id === id;
     });
-    console.log(frame)
+
     frame.inCart = false;
     frame.bookmarked = true;
+
    	this.setState({glasses: newState});
   },
 
@@ -74,7 +91,6 @@ var Demo = React.createClass({
   	var bookmarks = _.map(_.filter(this.state.glasses, function(g) {
   	  return g.bookmarked;
   	}), function(g) {
-  		console.log("bookmarked id "  + g.id);
   		return (
   	<div key={g.name}>
   	  <div className="six">
