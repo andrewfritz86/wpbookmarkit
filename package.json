@@ -1,0 +1,25 @@
+{
+  "name": "wpbookmarkit",
+  "version": "1.0.0",
+  "description": "This is a hackathon project in which I forgot to gitignore node modules!",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.13.3",
+    "fs": "0.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewfritz86/wpbookmarkit.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrewfritz86/wpbookmarkit/issues"
+  },
+  "homepage": "https://github.com/andrewfritz86/wpbookmarkit#readme"
+}
